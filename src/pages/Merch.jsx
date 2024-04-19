@@ -1,16 +1,16 @@
 import React from 'react'
-import GroundCard from '../components/GroundCard';
 import axios from 'axios';
 import { BASE_URL } from '../utils/helper';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import MerchCard from './components/MerchCard.jsx';
 
-const Grounds = () => {
+const Merch = () => {
 
-    const [grounds, setGrounds] = useState([]);
+    const [merch, setmerch] = useState([]);
     const token = localStorage.getItem('token');
 
-    const getAllGrounds = async () => {
+    const getAllMerches = async () => {
         try {
             const { data } = await axios.get(`${BASE_URL}/api/v1/admin/fetch-Merch`, {
                 headers: {
@@ -20,20 +20,19 @@ const Grounds = () => {
             if (data.success) {
                 setGrounds(data.grounds);
             }
-           
         } catch (error) {
             console.log(error);
         }
     }
     useEffect(() => {
-        getAllGrounds();
+        getAllMerches();
     }, []);
 
     return (
         <div className='flex flex-wrap justify-start gap-14'>
             {grounds?.map((ground) =>
                 <div key={ground?._id} className="ml-10 mt-5">
-                    <GroundCard
+                    <MerchCard
                         id={ground?._id}
                         name={ground?.ground_name}
                         location={ground.location}
@@ -45,5 +44,4 @@ const Grounds = () => {
         </div>
     )
 }
-
 export default Grounds;
