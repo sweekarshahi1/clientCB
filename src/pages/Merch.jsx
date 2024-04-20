@@ -3,7 +3,7 @@ import axios from 'axios';
 import { BASE_URL } from '../utils/helper';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import MerchCard from './components/MerchCard.jsx';
+import MerchCard from '../components/MerchCard';
 
 const Merch = () => {
 
@@ -12,14 +12,15 @@ const Merch = () => {
 
     const getAllMerches = async () => {
         try {
-            const { data } = await axios.get(`${BASE_URL}/api/v1/admin/fetch-Merch`, {
+            const { data } = await axios.get(`${BASE_URL}/api/v1/get-all-merch`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 }
             });
             if (data.success) {
-                setGrounds(data.grounds);
+                setmerch(data.merch);
             }
+            console.log(data)
         } catch (error) {
             console.log(error);
         }
@@ -30,18 +31,18 @@ const Merch = () => {
 
     return (
         <div className='flex flex-wrap justify-start gap-14'>
-            {grounds?.map((ground) =>
-                <div key={ground?._id} className="ml-10 mt-5">
+            {merch?.map((merch) =>
+                <div key={merch?._id} className="ml-10 mt-5">
                     <MerchCard
-                        id={ground?._id}
-                        name={ground?.ground_name}
-                        location={ground.location}
-                        price={ground.price}
-                        image={ground?.images[0]}
+                        id={merch?._id}
+                        name={merch?.productName}
+                        price={merch.price}
+                        image={merch?.images}
+                        description={merch?.description}
                     />
                 </div>
             )}
         </div>
     )
 }
-export default Grounds;
+export default Merch;

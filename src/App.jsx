@@ -11,6 +11,8 @@ import Bookings from './pages/Bookings';
 import Grounds from './pages/Grounds';
 import Footer from './pages/Footer';
 import Payment from './pages/Payment';
+import Merch from "./pages/Merch"
+import MerchDetailsPage from './pages/MerchDetailsPage.jsx'
 function App() {
 
   return (
@@ -26,6 +28,9 @@ function App() {
             <Route path="/bookings" element={<Bookings />} />
             <Route path="/grounds" element={<Grounds />} />
             <Route path="/payment" element={<Payment />} />
+            <Route path="/merch" element={<Merch />} />
+            <Route path="/merch/:id" element={<MerchDetailsPage />} />
+
           </Routes>
         </Router>
         <Footer />
