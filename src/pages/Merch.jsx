@@ -29,6 +29,7 @@ const Merch = () => {
         getAllMerches();
     }, []);
 
+
     return (
         <div className='flex flex-wrap justify-start gap-14'>
             {merch?.map((merch) =>
@@ -37,7 +38,7 @@ const Merch = () => {
                         id={merch?._id}
                         name={merch?.productName}
                         price={merch.price}
-                        image={merch?.images}
+                        image={merch?.image}
                         description={merch?.description}
                     />
                 </div>
