@@ -14,14 +14,14 @@ const GoogleMap = ({ lat, long, name }) => {
 
     const [apiKey, setApiKey] = useState([]);
 
-    //fetch api key from backend
+   
     const getApiKey = async () => {
         try {
             const { data } = await axios.get(`${BASE_URL}/api/v1/user/api-key`);
             if (data?.success) {
                 setApiKey(data?.key);
             }
-            // console.log(typeof (apiKey));
+           
         } catch (error) {
             console.log(error);
         }

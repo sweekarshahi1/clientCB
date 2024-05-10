@@ -19,6 +19,7 @@ const GroundCard = ({ id, name, location, price, image }) => {
                 View
             </button>
         </div>
+
     );
 };
 
@@ -30,6 +31,7 @@ export const BookingCard = ({ id, user, ground, date, time }) => {
             <h3 className="text-white text-xl font-bold mb-2">{ground}</h3>
             <p className="text-white mb-2 font-semibold">Date: {date}</p>
             <p className="text-white mb-2 font-semibold">Time: {time}</p>
+            <p className="text-white mb-2 font-semibold">Time: {user}</p>
             {/* <p className="text-gray-700 mb-2 font-bold">₹ <span className='font-normal'>${price}</span></p> */}
             <button
                 onClick={() => {
