@@ -35,8 +35,7 @@ const Bookings = () => {
         } catch (error) {
             console.log(error);
         }
-    }
-
+    }   
     useEffect(() => {
         getBookings();
     }, []);
