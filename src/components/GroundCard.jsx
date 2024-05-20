@@ -1,23 +1,32 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import GoogleMap from './GoogleMap';
 
 const GroundCard = ({ id, name, location, price, image }) => {
 
     const navigate = useNavigate();
 
     return (
-        <div className="bg-black w-80 p-4 shadow-md rounded-sm">
+        <div className="bg-white w-80 p-4 shadow-md rounded-sm">
             <img src={image} alt={name} className="w-full h-40 object-cover mb-4" />
-            <h3 className="text-xl text-white font-bold mb-2">{name}</h3>
-            <p className="text-white mb-2 font-semibold">{location}</p>
-            <p className="text-white mb-2 font-bold">₹ <span className='font-normal'>{price}/hr</span></p>
+            <h3 className="text-xl text-black font-bold mb-2">{name}</h3>
+            <p className="text-black mb-2 font-semibold">{location}</p>
+            <p className="text-black mb-2 font-bold">₹ <span className='font-normal'>{price}/hr</span></p>
             <button
                 onClick={() => {
                     navigate(`/ground/${id}`);
                 }}
-                className="bg-gray-900 text-white px-4 py-2 rounded-lg">
+                className="bg-black text-white px-4 py-2 rounded-lg">
                 View
             </button>
+            <button
+                onClick={() => {
+                    navigate(`/ground/${id}`);
+                }}
+                className="bg-white text-black px-4 py-2 rounded-lg">
+                Give Feedback
+            </button>
+
         </div>
 
     );
@@ -40,6 +49,7 @@ export const BookingCard = ({ id, user, ground, date, time }) => {
                 className="bg-green-700 text-white px-4 py-2 rounded-full">
                 View
             </button>
+            {/* <GoogleMap /> */}
         </div>
     )
 }

@@ -38,7 +38,7 @@ const Login = () => {
 			toast.error("Fields cannot be empty");
 			return;
 		}
-
+		
 		try {
 			const { data } = await axios.post(`${BASE_URL}/api/v1/user/login`, {
 				email: inputs.email,

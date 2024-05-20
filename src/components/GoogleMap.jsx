@@ -1,50 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import GoogleMapReact from 'google-map-react';
-import axios from 'axios';
-import { BASE_URL } from '../utils/helper';
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 
-const GoogleMap = ({ lat, long, name }) => {
-    const defaultCenter = {
-        center: {
-            lat: 27.7159,
-            lng: 85.3278
-        },
-        zoom: 15
-    };
-
-    const [apiKey, setApiKey] = useState([]);
-
-   
-    const getApiKey = async () => {
-        try {
-            const { data } = await axios.get(`${BASE_URL}/api/v1/user/api-key`);
-            if (data?.success) {
-                setApiKey(data?.key);
-            }
-           
-        } catch (error) {
-            console.log(error);
-        }
-    }
-    useEffect(() => {
-        getApiKey();
-    }, []);
-
+const GoogleMap = ({ lat, long }) => {
+    // Convert lat and long from string to integer
+    // const parsedLat = parseFloat(lat);
+    // const parsedLong = parseFloat(long);
+    console.log(lat,long)
     return (
-        <div style={{ height: '250px', width: '100%' }}>
-            <GoogleMapReact
-                bootstrapURLKeys={{ key: apiKey }}
-                defaultCenter={defaultCenter.center}
-                defaultZoom={defaultCenter.zoom}
-            >
-                <div
-                    lat={lat}
-                    lng={long}
-                    text={name}
-                />
-            </GoogleMapReact>
-        </div>
+        <MapContainer
+            center={[28.7213,85.3575]}
+            zoom={20}
+            style={{ height: "400px", width: "100%" }}
+        >
+            <TileLayer
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            />
+            <Marker position={[lat,long]} />
+        </MapContainer>
     );
-}
+};
 
 export default GoogleMap;

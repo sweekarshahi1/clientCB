@@ -6,9 +6,6 @@ const ImageSlider = () => {
         'versus 2',
         'versus 3',
         'versus 4',
-        // 'versus 5',
-        // 'versus 6',
-        // Add more image URLs as needed
     ];
 
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -16,7 +13,7 @@ const ImageSlider = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentImageIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
-        }, 3000); // Change image every 5 seconds
+        }, 3000);
 
         return () => clearInterval(interval);
     }, []);
@@ -24,13 +21,11 @@ const ImageSlider = () => {
     const handlePrev = () => {
         setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
     };
-
     const handleNext = () => {
         setCurrentImageIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
     };
-
     return (
-        <div className="relative text-white w-full h-96 overflow-hidden">
+        <div className="relative text-white w-full h-[1000px] overflow-hidden">
             <div className="absolute inset-0 bg-black opacity-40 z-20"></div>
             <div className="absolute inset-0 flex items-center justify-center z-30">
         <h1 className="text-white text-6xl font-bold">CourtBooking.com</h1>
